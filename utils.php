@@ -3,9 +3,9 @@
 function addUser($user,$email,$password){
     global $db;
   
-    $pepper = "c1isvFdxMDdmjOlvxpecFw";
-    $pwd_peppered = hash_hmac("sha256", $password, $pepper);
-    $pwd_hashed = password_hash($pwd_peppered, PASSWORD_ARGON2ID);
+    // $pepper = "c1isvFdxMDdmjOlvxpecFw";
+    // $pwd_peppered = hash_hmac("sha256", $password, $pepper);
+    $pwd_hashed = password_hash($password, PASSWORD_DEFAULT);
 
     $sqlQuery = 'INSERT INTO users(user, email, password) VALUES (:user, :email, :password)';
     

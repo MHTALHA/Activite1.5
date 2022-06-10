@@ -1,12 +1,49 @@
 <?php include_once("utils.php") ;?>
 <?php 
-session_start() ;
-$_SESSION["email"]=$_GET['email'];
-$_SESSION["password"]=$_GET['password'];
-print_r($_SESSION);
-print_r($_GET);
+// session_start() ;
+// $_SESSION["email"]=$_GET['email'];
+// $_SESSION["password"]=$_GET['password'];
+// print_r($_SESSION);
+// print_r($_GET);
+
 
 ;?>
+<?php 
+include('db.php');
+if(isset($_POST['sign_in'])){
+  $email = $_POST['email'];
+
+  $password = $_POST['password'];
+echo   $password;
+  $query = $db->query("SELECT * from users WHERE email = '$email'");
+
+  $count = $query->rowcount();
+  //echo $count.'</br>';
+  $row = $query->fetch();
+  
+  echo $row['password'];
+ 
+  if (password_verify($password, $row['password'])) {
+    echo "Password matches.";
+  }
+  else {
+    echo "Password incorrect.";
+  }
+  if ($count > 0){
+  session_start();
+  $_SESSION['id'] = $row['id'];
+   header('location:index.php');
+  }	else {
+  ?>
+  <!-- <script>
+    alert("Incorrect Details. Check your User Name or Password.")
+    window.location="connexion.php";
+  </script> -->
+  <?php 
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

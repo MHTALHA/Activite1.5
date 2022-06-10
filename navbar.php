@@ -43,6 +43,7 @@
         <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         <a class="nav-link" href="inscription.php">Inscription</a>
         <a class="nav-link" href="connexion.php">Connexion</a>
+        <a class="nav-link" href="deconnexion.php">Deconnexion</a>
         <!-- <a class="nav-link disabled"
           >Disabled</a
         > -->
